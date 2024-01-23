@@ -1,1 +1,1 @@
-This is the read me file for the project 0x06-python-classes
+This is the read me file for the project on python classes

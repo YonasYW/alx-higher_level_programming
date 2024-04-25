@@ -1,25 +1,23 @@
 #!/usr/bin/python3
-""" Finds a peak inside a list """
-
 
 def find_peak(list_of_integers):
-    if list_of_integers == []:
+    """Finds peak
+    Args:
+        list_of_integers (list): list of integers
+    """
+    len_lst = len(list_of_integers)
+    if len_lst < 3:
         return None
+    peak = list_of_integers[1]
+    for i in range(1, len_lst):
+        if list_of_integers[i] >= peak:
+            peak = list_of_integers[i]
+    return peak
 
-    length = len(list_of_integers)
-    mid = int(length / 2)
-    li = list_of_integers
-
-    if mid - 1 < 0 and mid + 1 >= length:
-        return li[mid]
-    elif mid - 1 < 0:
-        return li[mid] if li[mid] > li[mid + 1] else li[mid + 1]
-    elif mid + 1 >= length:
-        return li[mid] if li[mid] > li[mid - 1] else li[mid - 1]
-
-    if li[mid - 1] < li[mid] > li[mid + 1]:
-        return li[mid]
-
-    if li[mid + 1] > li[mid - 1]:
-        return find_peak(li[mid:])
-    return find_peak(li[:mid])
+if __name__ == "__main__":
+    print(find_peak([1, 2, 4, 6, 3]))
+    print(find_peak([4, 2, 1, 2, 3, 1]))
+    print(find_peak([2, 2, 2]))
+    print(find_peak([]))
+    print(find_peak([-2, -4, 2, 1]))
+    print(find_peak([4, 2, 1, 2, 3, 1]))
